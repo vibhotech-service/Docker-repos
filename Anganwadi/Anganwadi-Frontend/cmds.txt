@@ -1,0 +1,5 @@
+docker build -t anganwadi_frontend .
+
+docker run -d -p 3007:3007 anganwadi_frontend
+
+/home/ubuntu/Anganwadi-Frontend/src/utils/Api.js

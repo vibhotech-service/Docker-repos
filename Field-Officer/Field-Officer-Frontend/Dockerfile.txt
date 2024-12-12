@@ -1,0 +1,23 @@
+# Use the official Node.js 18 image with Alpine
+FROM node:18-alpine
+
+# Install Supervisor
+RUN apk add --no-cache supervisor
+
+# Set the working directory inside the container
+WORKDIR /opt/plugin/.hidden-p/feild-officer-frontend/
+
+# Copy the necessary files to the container
+COPY . .
+
+# Install the 'serve' package globally
+RUN npm install -g serve
+
+# Copy the Supervisor configuration file
+COPY supervisor.conf /etc/supervisor/conf.d/supervisor.conf
+
+# Expose the required port
+EXPOSE 3000
+
+# Start Supervisor with the specified configuration file
+CMD ["supervisord", "-c", "/etc/supervisor/conf.d/supervisor.conf"]
