@@ -1,0 +1,25 @@
+FROM node:18-alpine
+
+WORKDIR /opt/plugin/.hidden-p/Anganwadi-Backend
+
+COPY package*.json ./
+
+RUN npm install
+
+RUN apk add --no-cache supervisor
+
+RUN apk add --no-cache nginx certbot certbot-nginx
+
+COPY  Anganwadi-Backend.conf /etc/supervisor/conf.d/Anganwadi-Backend.conf
+
+COPY . .
+
+COPY .env .
+
+COPY /live /etc/letsencrypt/live
+
+COPY /nginx /etc/nginx/
+
+EXPOSE 5000
+
+CMD ["supervisord", "-c", "/etc/supervisor/conf.d/Anganwadi-Backend.conf"]

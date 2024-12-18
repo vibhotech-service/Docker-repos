@@ -1,0 +1,32 @@
+server {
+    listen 80;
+    server_name docker-anganwadi-back.vibhohcm.com;
+
+    # Redirect all HTTP requests to HTTPS
+    return 301 https://$host$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    server_name docker-anganwadi-back.vibhohcm.com;
+
+    # SSL certificates
+    ssl_certificate /etc/letsencrypt/live/docker-anganwadi-back.vibhohcm.com/fullchain.pem; # managed by Certbot
+ # Fullchain certificate
+    ssl_certificate_key /etc/letsencrypt/live/docker-anganwadi-back.vibhohcm.com/privkey.pem; # managed by Certbot
+ # Private key
+
+    # SSL options
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_prefer_server_ciphers on;
+    ssl_ciphers "ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256";
+
+    location / {
+        proxy_pass http://51.20.182.73:5050; # Replace with the correct IP and port
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+}
