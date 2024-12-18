@@ -1,3 +1,0 @@
-docker build -t frs-frontend .
-
-docker run -d -p 3000:3000 frs-frontend

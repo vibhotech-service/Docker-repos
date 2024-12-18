@@ -1,0 +1,9 @@
+root@ipaddress:/home/ubuntu/pmba_dashboard# ls -al certs/
+total 28
+drwxr-xr-x 2 root root 4096 Dec 16 07:05 .
+drwxr-xr-x 9 root root 4096 Dec 16 10:58 ..
+-rw-r--r-- 1 root root 1318 Dec 16 06:54 cert.pem
+-rw-r--r-- 1 root root 1566 Dec 16 06:54 chain.pem
+-rw-r--r-- 1 root root  424 Dec 16 06:55 dhparam.pem
+-rw-r--r-- 1 root root 2884 Dec 16 06:54 fullchain.pem
+-rw------- 1 root root  241 Dec 16 06:54 privkey.pem

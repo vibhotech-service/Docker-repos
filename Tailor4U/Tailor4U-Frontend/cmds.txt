@@ -1,5 +1,0 @@
-docker build -t tailor_frontend .
-
-docker run -d -p 3006:3006 tailor_frontend
-
-AmazonEC2ContainerRegistryFullAccess

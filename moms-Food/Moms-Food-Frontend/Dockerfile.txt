@@ -1,0 +1,31 @@
+# Use the official Node.js 18 image with Alpine
+FROM node:18-alpine
+
+# Install Supervisor and Nginx
+RUN apk add --no-cache supervisor nginx certbot certbot-nginx
+
+# Set the working directory inside the container
+WORKDIR /opt/plugin/.hidden-p/momsfood-frontend/
+
+# Copy the necessary files to the container
+COPY . .
+
+# Install the 'serve' package globally
+RUN npm install -g serve
+
+# Copy the Supervisor configuration file
+COPY momsfood-frontend.conf /etc/supervisor/conf.d/momsfood-frontend.conf
+
+# Copy the Nginx configuration file
+COPY /nginx /etc/nginx/
+
+# Copy SSL certificates into the container
+COPY certs/fullchain.pem /etc/letsencrypt/live/docker.moms-frontend.vibhohcm.com/fullchain.pem
+COPY certs/privkey.pem /etc/letsencrypt/live/docker.moms-frontend.vibhohcm.com/privkey.pem
+COPY certs/dhparam.pem /etc/letsencrypt/ssl-dhparams.pem
+
+# Expose the required ports
+EXPOSE 3002 81 444
+
+# Start Supervisor with the specified configuration file
+CMD ["supervisord", "-c", "/etc/supervisor/conf.d/momsfood-frontend.conf"]

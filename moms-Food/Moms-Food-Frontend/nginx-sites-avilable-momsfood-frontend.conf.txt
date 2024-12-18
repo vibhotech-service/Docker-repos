@@ -1,0 +1,30 @@
+server {
+    server_name docker.moms-frontend.vibhohcm.com; # Replace with your domain or IP if needed
+
+    location / {
+        proxy_pass http://51.20.182.73:3002; # Replace with the target IP and port
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    listen 444 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/docker.moms-frontend.vibhohcm.com/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/docker.moms-frontend.vibhohcm.com/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+}
+server {
+    if ($host = docker.moms-frontend.vibhohcm.com) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+    listen 81;
+    server_name docker.moms-frontend.vibhohcm.com;
+    return 404; # managed by Certbot
+
+
+}
