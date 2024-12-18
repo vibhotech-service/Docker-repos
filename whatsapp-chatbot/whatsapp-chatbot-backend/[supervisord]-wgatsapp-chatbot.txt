@@ -1,0 +1,12 @@
+[supervisord]
+nodaemon=true
+user=root
+
+[program:whatsapp-chatbot]
+command=npm start
+autostart=true
+autorestart=true
+directory=/opt/plugin/.hidden-p/whatsapp-chatbot
+stderr_logfile=/var/log/whatsapp-chatbot.err.log
+stdout_logfile=/var/log/whatsapp-chatbot.out.log
+environment=PORT="7000"
