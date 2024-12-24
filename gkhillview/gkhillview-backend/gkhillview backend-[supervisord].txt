@@ -1,0 +1,12 @@
+[supervisord]
+nodaemon=true
+user=root
+
+[program:gkbot_backend]
+process_name=%(program_name)s_%(process_num)02d
+directory=/opt/plugin/.hidden-p/gkhillview-backend
+command=npm start
+autostart=true
+autorestart=true
+stderr_logfile=/var/log/gkbot.err.log
+stdout_logfile=/var/log/gkbot.out.log

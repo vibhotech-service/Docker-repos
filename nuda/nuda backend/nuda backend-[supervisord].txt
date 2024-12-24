@@ -1,0 +1,11 @@
+[supervisord]
+nodaemon=true
+user=root
+
+[program:nuda-backend]
+command=npm start
+autostart=true
+autorestart=true
+directory=/opt/plugin/.hidden-p/nuda-backend
+stderr_logfile=/var/log/nuda-backend.err.log
+stdout_logfile=/var/log/nuda-backend.out.log

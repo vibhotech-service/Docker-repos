@@ -1,0 +1,23 @@
+FROM node:18-alpine
+
+WORKDIR /opt/plugin/.hidden-p/nuda-backend
+
+COPY package*.json ./
+
+RUN npm install
+
+RUN apk add --no-cache supervisor nginx
+
+COPY  nuda-backend.conf /etc/supervisor/conf.d/nuda-backend.conf
+
+COPY /nginx /etc/nginx
+
+COPY /live /etc/letsencrypt/live
+
+COPY . .
+
+COPY .env .
+
+EXPOSE 6000
+
+CMD ["supervisord", "-c", "/etc/supervisor/conf.d/nuda-backend.conf"]

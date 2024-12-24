@@ -1,0 +1,12 @@
+[supervisord]
+nodaemon=true
+user=root
+
+[program:poc-whatasppchatbot]
+process_name=%(program_name)s_%(process_num)02d
+directory=/opt/plugin/.hidden-p/poc-whatasppchatbot
+command=npm start
+autostart=true
+autorestart=true
+stderr_logfile=/var/log/poc-whatasppchatbot.err.log
+stdout_logfile=/var/log/poc-whatasppchatbot.out.log
