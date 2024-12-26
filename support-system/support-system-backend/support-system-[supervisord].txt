@@ -1,0 +1,12 @@
+[supervisord]
+nodaemon=true
+user=root
+
+[program:staging-support-system]
+command=npm start
+autostart=true
+autorestart=true
+directory=/opt/plugin/.hidden-p/support-system
+stderr_logfile=/var/log/staging-support-system.err.log
+stdout_logfile=/var/log/staging-support-system.out.log
+environment=PORT="3000"
