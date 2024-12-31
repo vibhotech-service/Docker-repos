@@ -1,0 +1,23 @@
+FROM node:18-alpine
+
+WORKDIR /opt/plugin/.hidden-p/support-system
+
+COPY package*.json ./
+
+RUN npm install
+
+RUN apk add --no-cache supervisor nginx
+
+COPY  staging-support-system.conf /etc/supervisor/conf.d/staging-support-system.conf
+
+COPY /etc/nginx /etc/nginx
+
+#COPY /live /etc/letsencrypt/live
+
+COPY . .
+
+COPY .env .
+
+EXPOSE 3000
+
+CMD ["supervisord", "-c", "/etc/supervisor/conf.d/staging-support-system.conf"]
