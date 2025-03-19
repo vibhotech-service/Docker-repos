@@ -1,1 +1,1 @@
-![Docker Animation](https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=24&duration=4000&color=00FF00&background=000000&center=true&vCenter=true&width=600&height=50&lines=🐳+Welcome+to+the+Docker+Kastapadandi!;🚀+Build%2C+Run%2C+and+Deploy+with+Docker!)
+![Docker Animation](https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=24&duration=4000&color=00FF00&background=000000&center=true&vCenter=true&width=600&height=50&lines=🐳+Welcome+to+the+Docker+Kastapadandi!;🚀+Build%2C+Run%2C+and+Deploy+Phalitham+Medhy!)
