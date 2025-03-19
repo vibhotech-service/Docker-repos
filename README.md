@@ -1,6 +1,1 @@
-  _____             _              
- |  __ \           | |             
- | |  | | ___   ___| | _____ _ __  
- | |  | |/ _ \ / __| |/ / _ \ '__| 
- | |__| | (_) | (__|   <  __/ |    
- |_____/ \___/ \___|_|\_\___|_|    
+![Docker Animation](https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=24&duration=4000&color=00FF00&background=000000&center=true&vCenter=true&width=600&height=50&lines=🐳+Welcome+to+the+Docker+Project!;🚀+Build%2C+Run%2C+and+Deploy+with+Docker!)
